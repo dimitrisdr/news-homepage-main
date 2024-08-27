@@ -39,7 +39,7 @@ p, h1, h2, h3 {
     --Dark-grayish-blue: hsl(236, 13%, 42%);
     --Very-dark-blue: hsl(240, 100%, 5%);
     --global-padding:1rem;
-    --min-text:0.8rem;
+    --min-text:1rem;
     --title-lg-text:2.5rem;
     --global-max-width:85em;
 }
@@ -148,6 +148,7 @@ body {
     gap:1rem;
 }
 
+
 .main-content__main-header {
     font-size: var(--title-lg-text);
 }
@@ -159,7 +160,8 @@ body {
 
 .btn {
     justify-self: flex-start;
-    padding: 0.825rem 1.5rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
     border: none;
     background-color: var(--Soft-red);
     font-weight: 700;
@@ -190,12 +192,14 @@ body {
 
 .new-articles__title {
     color: var(--Soft-orange);
+    font-size: var(--title-lg-text);
 }
 
 .new-articles-item__title {
     color: var(--Off-white);
     font-weight: 700;
     transition: color 0.2s ease-in;
+    font-size: 1.2rem;
 }
 
 .new-articles-item__title:hover {
@@ -212,19 +216,18 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
     justify-content:space-betweens;
-    gap: 1rem; 
+    gap: 2rem; 
 }
 
 .extra-articles-item {
     display: grid;
     grid-template-columns: auto 2fr;
     gap: 1rem;
-    line-height: 1.8;
+    /* line-height: 1.7; */
 }
 
 .extra-articles-item .img{
-    max-height: 150px;
-    background-color: red;
+    max-height: 190px;
 
 }
 
@@ -245,6 +248,8 @@ body {
 .extra-articles-item__title {
     font-weight: 700;
     transition: color 0.2s ease-in;
+    font-size: 1.2rem;
+    line-height: 1.1;
 }
 
 .extra-articles-item__title:hover {
@@ -335,7 +340,7 @@ body {
     }
 
     .main-article  {
-        line-height: 1.8;
+        line-height: 1.7;
     }
 
     .new-articles-container {
