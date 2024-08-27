@@ -13,7 +13,7 @@ img, svg {
 }
 
 h1, h2, h3 {
-    line-height: 1;
+    line-height: 1.2;
 }
 
 li {
@@ -40,7 +40,8 @@ p, h1, h2, h3 {
     --Very-dark-blue: hsl(240, 100%, 5%);
     --global-padding:1rem;
     --min-text:0.8rem;
-    --title-lg-text:2.5rem
+    --title-lg-text:2.5rem;
+    --global-max-width:85em;
 }
 
 /* css utility classes */
@@ -63,18 +64,24 @@ body {
     background-color:var(--Off-white);
     line-height:1.5;
     padding: var(--global-padding);
+}
+
+.main-wraper {
+    max-width: var(--global-max-width);
+    margin-inline: auto;
     display: grid;
-    gap: 2rem;
 }
 
 
 .header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
+    max-width: var(--global-max-width);
     background-color: var(--Off-white);
     padding: var(--global-padding);
+
 }
 
 .navbar {
@@ -128,9 +135,12 @@ body {
 }
 
 .main-content {
-    margin-top: 4rem;
     display: grid;
-    gap:3rem;
+    gap:2rem;
+}
+
+.main-content .img-container .img {
+    width: 100%;
 }
 
 .main-content__main-article-container, .main-article-container {
@@ -144,6 +154,7 @@ body {
 
 .main-article {
     font-size: var(--min-text);
+    max-width: 70ch;
 }
 
 .btn {
@@ -185,22 +196,32 @@ body {
 }
 
 .extra-articles-container {
+    margin-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 350px)); 
-    gap:1rem; 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    justify-content:space-betweens;
+    gap: 1rem; 
 }
 
 .extra-articles-item {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: auto 2fr;
     gap: 1rem;
+    line-height: 1.8;
+}
+
+.extra-articles-item .img{
+    max-height: 150px;
+    background-color: red;
+
 }
 
 .extra-articles-item__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 0.2rem;
+    max-width: 20ch;
+    gap: 0.5rem;
 }
 
 .extra-articles-item__number {
@@ -222,21 +243,61 @@ body {
 .attribution {
     font-size: 11px; 
     text-align: center; 
+    margin-top: 3rem;
 }
 
 .attribution a { 
     color: hsl(228, 45%, 44%); 
 }
 
-@media screen and (min-width:650px) {
-    
-}
-
-@media screen and (min-width:1000px) {
+@media screen and (min-width:72em) {
 
     :root{
         --min-text:1rem;
         --title-lg-text:3rem
+    }
+
+    .header {
+        padding: var(--global-padding) 0;
+    }
+
+    .nav-btn {
+        display: none;
+    }
+
+    .nav-item {
+        opacity: 1;
+        position: relative;
+    }
+
+    .nav-item::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 100%;
+        width: 100%;
+        height: 2px;
+        background-color: var(--Soft-red);
+        transform: scale(0.2, 0);
+        transform-origin: left;
+        transition: transform 0.2s ease-in;
+    }
+
+    .nav-item:hover::after{
+        transform: scale(1, 1);
+    }
+
+    .nav-items {
+        position: static;
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+        transform: unset;
+        transform-origin: unset;
+        transition: unset;
+        flex-grow: 0.2;
     }
 
     .main-content__main-header {
@@ -244,7 +305,8 @@ body {
     }
 
     .main-content {
-        grid-template-areas: 'img img news' 'main main news';
+        grid-template-areas: 'img news' 'main news';
+        grid-template-columns: 2fr 1fr;
     }
 
     .main-content .img-container {
@@ -254,7 +316,10 @@ body {
     .main-content__main-article-container {
         grid-area: main;
         grid-template-columns: repeat(2, 1fr);
+    }
 
+    .main-article  {
+        line-height: 1.8;
     }
 
     .new-articles-container {
@@ -262,10 +327,16 @@ body {
     }
 
     .extra-articles-container {
-        margin-top: 1.5rem;
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
-       
+    }
+
+    .extra-articles-item__content {
+        max-width: unset;
+    }
+
+    .extra-articles-item .img-container .img {
+        background-size: cover;
     }
 
 }
